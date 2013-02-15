@@ -1,0 +1,24 @@
+{% extends "site_base.html" %}
+
+{% block main_content %}
+	{% if beverage %}
+		<p>
+			Drink a {{ beverage }}!
+		</p>
+
+		<p>
+			{{ beverage.would_drink }} {{ beverage.would_drink|pluralize:"person,people" }} liked {{ beverage }} as a choice.
+		</p>
+			{{ beverage.would_not_drink }} {{ beverage.would_not_drink|pluralize:"person,people" }} didn't like {{ beverage }} as a choice.
+		<p>
+			Do you like {{ beverage }} as a choice?
+		</p>
+
+		<p>
+			<a href="{% url would_drink beverage_id=beverage.pk %}">yes</a>
+			<a href="{% url would_not_drink beverage_id=beverage.pk %}">no</a>
+		</p>
+	{% else %}
+		Sorry no drinks today.
+	{% endif %}
+{% endblock main_content %}
