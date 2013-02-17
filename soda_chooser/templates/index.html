@@ -1,5 +1,7 @@
 {% extends "site_base.html" %}
 
+{% load vote_links %}
+
 {% block main_content %}
 	{% if beverage %}
 		<p>
@@ -15,8 +17,7 @@
 		</p>
 
 		<p>
-			<a href="{% url would_drink beverage_id=beverage.pk %}">yes</a>
-			<a href="{% url would_not_drink beverage_id=beverage.pk %}">no</a>
+			{% vote_links beverage %}
 		</p>
 	{% else %}
 		Sorry no drinks today.
